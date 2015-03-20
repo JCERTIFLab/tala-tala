@@ -3,19 +3,18 @@ package com.jcertif.relooking.model;
 import android.view.DragEvent;
 import android.view.View;
 
-import com.jcertif.relooking.graphics.IReseizable;
+import com.jcertif.relooking.graphics.IResizable;
 
 /**
  * Created by bashizip on 20/03/2015.
  *
  */
-public  class RelookingItem implements View.OnDragListener, IReseizable{
+public  class RelookingItem implements View.OnDragListener, IResizable {
 
     private  int drawableResource;
 
     private String name;
     private  ItemType type;
-
     private float width;
     private float height;
 

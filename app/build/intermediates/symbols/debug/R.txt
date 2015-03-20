@@ -358,7 +358,8 @@ int drawable abc_textfield_default_mtrl_alpha 0x7f02002f
 int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
-int drawable ic_launcher 0x7f020033
+int drawable default_avatar 0x7f020033
+int drawable ic_launcher 0x7f020034
 int id action_bar 0x7f080031
 int id action_bar_activity_content 0x7f080000
 int id action_bar_container 0x7f080030
@@ -471,8 +472,7 @@ int string abc_shareactionprovider_share_with_application 0x7f0a000e
 int string abc_toolbar_collapse_description 0x7f0a000f
 int string action_settings 0x7f0a0010
 int string app_name 0x7f0a0011
-int string hello_world 0x7f0a0012
-int string title_activity_main 0x7f0a0013
+int string title_activity_main 0x7f0a0012
 int style AppTheme_Base 0x7f0b0000
 int style Base_TextAppearance_AppCompat 0x7f0b0001
 int style Base_TextAppearance_AppCompat_Body1 0x7f0b0002

@@ -42,10 +42,6 @@ public abstract class RelookingItem implements View.OnDragListener, IResizable {
 
 
 
-
-
-
-
     public String getName() {
         return name;
     }

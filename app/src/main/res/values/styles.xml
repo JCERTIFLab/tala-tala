@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    
+     <style name="TitleTextStyle" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+  
+</resources>

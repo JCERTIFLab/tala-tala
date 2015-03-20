@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
+        <dex dex="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/classes-03ddec026e4026f280df48e52d42d44c59db7ed7.jar" />
+    </item>
+    <item
+        jar="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/classes-d30a9d4d36efb91cadc1bc9497939cee4d5eeb22.jar" />
+    </item>
+    <item
+        jar="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/libs/internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-48eb74ee573a7113fbf7fa51d0bee12364ecf1ee.jar" />
+    </item>
+    <item
+        jar="/Users/bashizip/Documents/Java/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-3c9534caf8c2d1ff7028d8e6cba806be341bda06.jar" />
+    </item>
+
+</items>

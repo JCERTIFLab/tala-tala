@@ -1,5 +1,6 @@
 package com.jcertif.relooking.model;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View;
@@ -13,42 +14,28 @@ import com.jcertif.relooking.graphics.IResizable;
  * Created by bashizip on 20/03/2015.
  *
  */
-public abstract class RelookingItem implements View.OnDragListener, IResizable {
+public  abstract  class  RelookingItem implements View.OnDragListener, IResizable {
 
-    private String name;
+
+    private  int resourceId;
+
+    private Context context;
     private  ItemType type;
     private float width;
     private float height;
 
-    @Override
-    public boolean onDrag(View v, DragEvent event) {
-        return false;
-    }
-
-    @Override
-    public void resize(float ratio) {
-
-    }
-
-    @Override
-    public void rotate(float angle) {
-
-    }
-
-    @Override
-    public void translate(float x0, float y0, float x1, float y1) {
-
+    protected RelookingItem(Context context) {
+        this.context = context;
     }
 
 
 
-    public String getName() {
-        return name;
+    public int getResourceId() {
+        resourceId = context.getApplicationContext().getResources().getIdentifier(getFileName(), "drawable", context.getApplicationContext().getPackageName());
+        return resourceId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public abstract  String getFileName();
 
     public ItemType getType() {
         return type;
@@ -74,5 +61,24 @@ public abstract class RelookingItem implements View.OnDragListener, IResizable {
         this.height = height;
     }
 
-    public abstract Drawable getDrawableResource();
+    @Override
+    public boolean onDrag(View v, DragEvent event) {
+        return false;
+    }
+
+
+    @Override
+    public void resize(float ratio) {
+
+    }
+
+    @Override
+    public void rotate(float angle) {
+
+    }
+
+    @Override
+    public void translate(float x0, float y0, float x1, float y1) {
+
+    }
 }

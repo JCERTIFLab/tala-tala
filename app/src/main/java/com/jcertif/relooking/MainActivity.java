@@ -2,16 +2,34 @@ package com.jcertif.relooking;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+
+import com.jcertif.relooking.graphics.CanvasDimensions;
+import com.jcertif.relooking.graphics.ICanvasOperation;
+import com.jcertif.relooking.graphics.MainCanvas;
+import com.jcertif.relooking.model.Avatar;
+import com.jcertif.relooking.model.RelookingItem;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements ICanvasOperation{
+
+    Toolbar toolbar;
+
+    FrameLayout mainCanvas;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().hide();
     }
 
 
@@ -21,6 +39,10 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -35,5 +57,25 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void addItem(RelookingItem item) {
+
+    }
+
+    @Override
+    public void removeItem(RelookingItem item) {
+
+    }
+
+    @Override
+    public void changeAvatar(Avatar avatar) {
+
+    }
+
+    @Override
+    public void upDateDimensions(CanvasDimensions newDimensions) {
+
     }
 }

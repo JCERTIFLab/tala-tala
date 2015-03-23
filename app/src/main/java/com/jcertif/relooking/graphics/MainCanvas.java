@@ -1,6 +1,11 @@
 package com.jcertif.relooking.graphics;
 
+import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.jcertif.relooking.model.Avatar;
 import com.jcertif.relooking.model.RelookingItem;
@@ -13,20 +18,34 @@ import com.jcertif.relooking.model.RelookingItem;
  * Created by bashizip on 20/03/2015.
  *
  */
-public class MainCanvas implements CanvasOperation {
+public class MainCanvas extends FrameLayout implements ICanvasOperation {
 
-    private View parent;
+
     private  Avatar avatar;
     private  CanvasDimensions dimensions;
+
+
+    public MainCanvas(Context context) {
+        super(context);
+    }
 
 
     @Override
     public void addItem(RelookingItem item) {
 
+        ImageView imgView = new ImageView(getContext());
+        imgView.setId(item.getResourceId());
+        imgView.setImageDrawable(getResources().getDrawable(item.getResourceId()));
+
+        this.addView(imgView);
+
+
     }
 
     @Override
     public void removeItem(RelookingItem item) {
+
+        removeViewAt(item.getResourceId());
 
     }
 
@@ -36,7 +55,7 @@ public class MainCanvas implements CanvasOperation {
     }
 
     @Override
-    public void upDataDimensions(CanvasDimensions newDimensions) {
+    public void upDateDimensions(CanvasDimensions newDimensions) {
 
     }
 }

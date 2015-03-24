@@ -2,6 +2,7 @@ package com.jcertif.relooking.graphics;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,16 +22,16 @@ import com.jcertif.relooking.model.RelookingItem;
  */
 public  class PaletteAdapter extends BaseAdapter {
 
-    private List<RelookingItem> itemList;
+    private List<Drawable> itemList;
     private LayoutInflater mLayoutInflater;
     private Context ctx;
 
-    public PaletteAdapter(Context ctx, List<RelookingItem> itemList) {
+    public PaletteAdapter(Context ctx, List<Drawable> itemList) {
         this.ctx=ctx;
         this.itemList=itemList;
     }
 
-    public PaletteAdapter(List<RelookingItem> itemList) {
+    public PaletteAdapter(List<Drawable> itemList) {
         this.itemList=itemList;
     }
 
@@ -51,23 +52,24 @@ public  class PaletteAdapter extends BaseAdapter {
     }
 
 
-    public List<RelookingItem> getItemList() {
+    public List<Drawable> getItemList() {
         return itemList;
     }
 
-    public void setItemList(List<RelookingItem> itemList) {
+    public void setItemList(List<Drawable> itemList) {
         this.itemList = itemList;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        RelookingItem item = itemList.get(position);
+        Drawable item = itemList.get(position);
 
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.item_relooking, null);
+            convertView = mLayoutInflater.inflate(R.layout.palette_item, null);
         }
         ImageView imageView = (ImageView) convertView.findViewById((R.id.palette_image));
-        imageView.setImageResource(item.getResourceId());
+        imageView.setImageDrawable(item);
+
         return convertView;
     }
 

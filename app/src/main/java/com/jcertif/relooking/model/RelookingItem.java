@@ -1,14 +1,12 @@
 package com.jcertif.relooking.model;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View;
 
+import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils.ItemType;
+import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils;
 import com.jcertif.relooking.graphics.IResizable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Classe mere de tous les items impliquEs dans le relooking
@@ -37,8 +35,6 @@ public  abstract  class  RelookingItem implements View.OnDragListener, IResizabl
         resourceId = context.getApplicationContext().getResources().getIdentifier(getFileName(), "drawable", context.getApplicationContext().getPackageName());
         return resourceId;
     }
-
-
 
 
     public abstract  String getFileName();

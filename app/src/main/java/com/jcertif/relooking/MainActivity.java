@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,7 +33,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class MainActivity extends ActionBarActivity implements ICanvasOperation, View.OnDragListener, IResizable, View.OnClickListener {
@@ -108,7 +107,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
                 hideToolBar();
 
-        //startSelectingItem(selectedType);
+        startSelectingItem(selectedType);
     }
 
 

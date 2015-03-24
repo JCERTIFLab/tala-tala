@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <GridLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:columnCount="2"
+
+        >
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton1"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:adjustViewBounds="true"
+            android:src="@drawable/bouton1"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:src="@drawable/bouton2"
+           />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton3"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:src="@drawable/bouton3"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton4"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:src="@drawable/bouton4"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton5"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:src="@drawable/bouton5"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton6"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:src="@drawable/bouton6"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imaeButton7"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:src="@drawable/bouton7"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imaeButton8"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:src="@drawable/bouton8"
+            />
+    </GridLayout>
+<!-- From: file:/Users/bashizip/AndroidStudioProjects/Relooking/app/src/main/res/layout/menu_boutons.xml -->

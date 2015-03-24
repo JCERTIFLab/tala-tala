@@ -49,7 +49,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cb28-d981-440e-887e-201c64a84bd9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/oeil6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/oeil6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/oeil7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/oeil7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/oeil7.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux8.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux9.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux10.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/oeil7.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/oeil6.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/levre.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/levre3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/oeil.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/oeil5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux8.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux9.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux10.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/oeil7.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/oeil6.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/levre.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/levre3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/oeil.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/oeil5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux8.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux9.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux10.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/oeil6.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/levre.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/levre3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/oeil.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/oeil5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux8.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux9.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux10.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/levre.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/levre3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/oeil.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/oeil5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux8.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux9.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux10.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/levre.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/levre3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/oeil.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/oeil5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/Avatar.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/Avatar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/Cheveux.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/Cheveux.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/Corps.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/Corps.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/ICanvasOperation.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/ICanvasOperation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/IResizable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/IResizable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/com/jcertif/relooking/utils/ItemsUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/com/jcertif/relooking/utils/ItemsUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java" />
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/MainCanvas.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/MainCanvas.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/PaletteAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/PaletteAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/jcertif/relooking/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/jcertif/relooking/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/RelookingItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/RelookingItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/media/RelookingItemsFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/media/RelookingItemsFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/palette.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/palette.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/palette_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/palette_item.xml" />
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Relooking.iws" />
@@ -76,8 +128,13 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.6402214" vertical-offset="3133" max-vertical-offset="5415">
               <caret line="238" column="88" selection-start-line="238" selection-start-column="88" selection-end-line="238" selection-end-column="88" />
+=======
+            <state vertical-scroll-proportion="0.44649446" vertical-offset="4873" max-vertical-offset="5415">
+              <caret line="352" column="13" selection-start-line="352" selection-start-column="13" selection-end-line="352" selection-end-column="13" />
+>>>>>>> origin/master
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1378,11 +1435,15 @@
       <created>1427224937601</created>
       <updated>1427224937601</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00010" summary="Affichage de tous les types d'itens dans la palette.">
       <created>1427232477776</created>
       <updated>1427232477776</updated>
     </task>
     <option name="localTasksCounter" value="11" />
+=======
+    <option name="localTasksCounter" value="10" />
+>>>>>>> origin/master
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1426,7 +1487,11 @@
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33488914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3204868" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2536042" sideWeight="0.8298397" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2536042" sideWeight="0.8298397" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> origin/master
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1500,8 +1565,12 @@
     <MESSAGE value="Add menu principal actionButtons" />
     <MESSAGE value="Ajout Palette et affichage de la palette pour le nenu habits ( faire de meme pour les autres )" />
     <MESSAGE value="Add show toolbar selon le context." />
+<<<<<<< HEAD
     <MESSAGE value="Affichage de tous les types d'itens dans la palette." />
     <option name="LAST_COMMIT_MESSAGE" value="Affichage de tous les types d'itens dans la palette." />
+=======
+    <option name="LAST_COMMIT_MESSAGE" value="Add show toolbar selon le context." />
+>>>>>>> origin/master
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1835,8 +1904,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.6402214" vertical-offset="3133" max-vertical-offset="5415">
           <caret line="238" column="88" selection-start-line="238" selection-start-column="88" selection-end-line="238" selection-end-column="88" />
+=======
+        <state vertical-scroll-proportion="0.44649446" vertical-offset="4873" max-vertical-offset="5415">
+          <caret line="352" column="13" selection-start-line="352" selection-start-column="13" selection-end-line="352" selection-end-column="13" />
+>>>>>>> origin/master
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

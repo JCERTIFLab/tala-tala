@@ -1,0 +1,6 @@
+/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/classes/debug
+/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-3c9534caf8c2d1ff7028d8e6cba806be341bda06.jar
+/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/systembartint-1.0.3-9a1d7006c861b2250061aa23534576e7ca37c1d8.jar
+/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-48eb74ee573a7113fbf7fa51d0bee12364ecf1ee.jar
+/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/classes-03ddec026e4026f280df48e52d42d44c59db7ed7.jar
+/Users/bashizip/AndroidStudioProjects/Relooking/app/build/intermediates/pre-dexed/debug/classes-d30a9d4d36efb91cadc1bc9497939cee4d5eeb22.jar

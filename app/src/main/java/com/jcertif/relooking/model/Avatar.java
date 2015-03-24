@@ -20,4 +20,9 @@ public class Avatar extends RelookingItem {
     public String getFileName() {
         return "default_avatar";
     }
+
+    @Override
+    public int getItemsCount() {
+        return 1;
+    }
 }

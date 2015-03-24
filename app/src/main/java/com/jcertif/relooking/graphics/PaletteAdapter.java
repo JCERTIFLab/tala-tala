@@ -1,6 +1,7 @@
 package com.jcertif.relooking.graphics;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,16 @@ import com.jcertif.relooking.model.RelookingItem;
  */
 public  class PaletteAdapter extends BaseAdapter {
 
-    List<RelookingItem> itemList;
+    private List<RelookingItem> itemList;
     private LayoutInflater mLayoutInflater;
+    private Context ctx;
 
-    public PaletteAdapter(  List<RelookingItem> itemList) {
+    public PaletteAdapter(Context ctx, List<RelookingItem> itemList) {
+        this.ctx=ctx;
+        this.itemList=itemList;
+    }
+
+    public PaletteAdapter(List<RelookingItem> itemList) {
         this.itemList=itemList;
     }
 
@@ -42,6 +49,16 @@ public  class PaletteAdapter extends BaseAdapter {
         return position;
 
     }
+
+
+    public List<RelookingItem> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<RelookingItem> itemList) {
+        this.itemList = itemList;
+    }
+
     public View getView(int position, View convertView, ViewGroup parent) {
 
         RelookingItem item = itemList.get(position);

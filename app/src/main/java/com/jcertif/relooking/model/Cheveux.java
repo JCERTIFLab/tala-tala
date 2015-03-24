@@ -17,4 +17,9 @@ public class Cheveux extends RelookingItem{
     public String getFileName() {
         return "cheveux";
     }
+
+    @Override
+    public int getItemsCount() {
+        return 0;
+    }
 }

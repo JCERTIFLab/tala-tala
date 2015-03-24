@@ -16,4 +16,9 @@ public class Corps extends RelookingItem {
     public String getFileName() {
         return "corps";
     }
+
+    @Override
+    public int getItemsCount() {
+        return 0;
+    }
 }

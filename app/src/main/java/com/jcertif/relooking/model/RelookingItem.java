@@ -7,6 +7,9 @@ import android.view.View;
 
 import com.jcertif.relooking.graphics.IResizable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Classe mere de tous les items impliquEs dans le relooking
  *
@@ -20,7 +23,7 @@ public  abstract  class  RelookingItem implements View.OnDragListener, IResizabl
     private  int resourceId;
 
     private Context context;
-    private  ItemType type;
+    private static ItemType type;
     private float width;
     private float height;
 
@@ -35,7 +38,12 @@ public  abstract  class  RelookingItem implements View.OnDragListener, IResizabl
         return resourceId;
     }
 
+
+
+
     public abstract  String getFileName();
+
+       public  abstract  int getItemsCount();
 
     public ItemType getType() {
         return type;

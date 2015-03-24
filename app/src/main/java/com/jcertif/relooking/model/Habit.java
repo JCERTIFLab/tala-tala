@@ -16,4 +16,9 @@ public class Habit extends RelookingItem {
     public String getFileName() {
         return "habit";
     }
+
+    @Override
+    public int getItemsCount() {
+        return 0;
+    }
 }

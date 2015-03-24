@@ -1,17 +1,29 @@
 package com.jcertif.relooking;
 
+import android.annotation.TargetApi;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.jcertif.relooking.graphics.CanvasDimensions;
 import com.jcertif.relooking.graphics.ICanvasOperation;
 import com.jcertif.relooking.graphics.MainCanvas;
+import com.jcertif.relooking.graphics.PaletteAdapter;
 import com.jcertif.relooking.model.Avatar;
+import com.jcertif.relooking.model.Cheveux;
+import com.jcertif.relooking.model.ItemType;
 import com.jcertif.relooking.model.RelookingItem;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements ICanvasOperation{
@@ -19,7 +31,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation{
     Toolbar toolbar;
 
     FrameLayout mainCanvas;
-
+    GridView palette;
+    PaletteAdapter paletteAdapter;
+    List<RelookingItem> itemList;
 
 
     @Override
@@ -27,9 +41,35 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
+
+
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
+        palette=(GridView)findViewById(R.id.palette);
+
+
+        itemList=new ArrayList<>();
+        paletteAdapter=new PaletteAdapter(this,itemList);
+
+
         getSupportActionBar().hide();
+
+
+    }
+
+
+
+
+    void loadItems(ItemType type){
+
+
+
     }
 
 
@@ -62,10 +102,21 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation{
     @Override
     public void addItem(RelookingItem item) {
 
+        ImageView imgView = new ImageView(this);
+        imgView.setId(item.getResourceId());
+
+        imgView.setImageDrawable(getResources().getDrawable(item.getResourceId()));
+
+        mainCanvas.addView(imgView);
+
+
     }
 
     @Override
     public void removeItem(RelookingItem item) {
+
+        mainCanvas.removeViewAt(item.getResourceId());
+        mainCanvas.refreshDrawableState();
 
     }
 
@@ -77,5 +128,23 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation{
     @Override
     public void upDateDimensions(CanvasDimensions newDimensions) {
 
+        //zooming
+
     }
+
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
 }

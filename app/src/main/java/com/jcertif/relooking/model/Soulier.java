@@ -15,4 +15,9 @@ public class Soulier extends RelookingItem {
     public String getFileName() {
         return null;
     }
+
+    @Override
+    public int getItemsCount() {
+        return 0;
+    }
 }

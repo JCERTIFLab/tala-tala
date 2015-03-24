@@ -16,10 +16,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils;
 import com.jcertif.relooking.graphics.CanvasDimensions;
 import com.jcertif.relooking.graphics.ICanvasOperation;
@@ -33,18 +37,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements ICanvasOperation, View.OnDragListener, IResizable {
+public class MainActivity extends ActionBarActivity implements ICanvasOperation, View.OnDragListener, IResizable,View.OnClickListener {
 
-    Toolbar toolbar;
+    Toolbar mToolbar;
 
     //FrameLayout mainCanvas;
     GridView palette;
     PaletteAdapter paletteAdapter;
     List<Drawable> drawablesList;
 
-    private FloatingActionButton btnHabits;
-    SlidingPaneLayout paletteContainer;
 
+    private FloatingActionsMenu mFabButton;
+    private FloatingActionButton btnHabits;
+
+    SlidingPaneLayout paletteContainer;
     ItemsUtils.ItemType selectedType;
 
     @Override
@@ -63,13 +69,12 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
 
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar =(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
         paletteContainer=(SlidingPaneLayout) findViewById(R.id.paletteContainer);
         btnHabits=(FloatingActionButton)findViewById(R.id.pick_robe);
-
-    //  mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
-      //  palette=(GridView)findViewById(R.id.palette);
+        mFabButton =(FloatingActionsMenu)findViewById(R.id.floating_menu);
 
         drawablesList=new ArrayList<>();
         paletteAdapter=new PaletteAdapter(this,drawablesList);
@@ -78,20 +83,23 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         palette.setAdapter(paletteAdapter);
 
-        btnHabits.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnHabits.setOnClickListener(this);
 
-                if(selectedType== ItemsUtils.ItemType.CLOTHES){
-                    paletteContainer.openPane();
-                    return;
-                }
-                new ItemLoaderTak().execute(ItemsUtils.ItemType.CLOTHES);
+        mFabButton.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                getSupportActionBar().show();
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+
+                 getSupportActionBar().hide();
             }
         });
 
+        getSupportActionBar().hide();
 
-      // getSupportActionBar().hide();
 
 
     }
@@ -120,6 +128,30 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         return  drawablesList;
 
     }
+
+        @Override
+        public void onClick(View v) {
+
+        if(v instanceof FloatingActionButton){
+            mFabButton.collapse();
+            if(getSupportActionBar().isShowing()){
+                getSupportActionBar().hide();
+            }
+
+
+        }
+              if (v.getId()==btnHabits.getId()) {
+
+
+            if (selectedType == ItemsUtils.ItemType.CLOTHES) {
+                      paletteContainer.openPane();
+                         return;
+             }
+                  new ItemLoaderTak().execute(ItemsUtils.ItemType.CLOTHES);
+
+
+           }}
+
 
 
 

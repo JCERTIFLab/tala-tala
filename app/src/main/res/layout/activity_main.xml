@@ -40,6 +40,7 @@ android:id="@+id/paletteContainer"
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/floating_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         fab:fab_addButtonColorNormal="@color/colorPrimary"

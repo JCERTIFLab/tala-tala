@@ -5,4 +5,4 @@
         android:src="@drawable/noir01"
         android:id="@+id/palette_image"
     android:adjustViewBounds="true"
-    android:layout_centerInParent="true"/>
+    android:layout_gravity="center"/>

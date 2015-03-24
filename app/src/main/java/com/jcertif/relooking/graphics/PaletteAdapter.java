@@ -25,6 +25,8 @@ public  class PaletteAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater;
     private Context ctx;
 
+    private ViewHolder holder;
+
     public PaletteAdapter(Context ctx, List<Drawable> itemList) {
         this.ctx=ctx;
         this.itemList=itemList;
@@ -46,28 +48,33 @@ public  class PaletteAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return position+1;
 
     }
 
 
-    public List<Drawable> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<Drawable> itemList) {
-        this.itemList = itemList;
-    }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        if (convertView == null) {
+
+            holder=new ViewHolder();
+            convertView = LayoutInflater.from(ctx).inflate(
+                    R.layout.palette_item, parent, false);
+
+            holder.mImageView = (ImageView) convertView.findViewById((R.id.palette_image));
+
+           convertView.setTag(holder);
+
+        }else{
+            holder=(ViewHolder)convertView.getTag();
+
+        }
+
+
         Drawable item = itemList.get(position);
 
-        if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.palette_item, null);
-        }
-        ImageView imageView = (ImageView) convertView.findViewById((R.id.palette_image));
-        imageView.setImageDrawable(item);
+        holder.mImageView.setImageDrawable(item);
 
         return convertView;
     }

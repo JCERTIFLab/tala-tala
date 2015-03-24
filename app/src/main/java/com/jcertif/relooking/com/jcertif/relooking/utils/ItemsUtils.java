@@ -19,7 +19,6 @@ public class ItemsUtils {
         switch (type) {
 
             case HAIR:
-
                 count = 13;
                 break;
             case EYES:

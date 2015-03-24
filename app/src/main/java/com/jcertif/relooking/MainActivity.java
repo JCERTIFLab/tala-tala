@@ -1,10 +1,12 @@
 package com.jcertif.relooking;
 
 import android.annotation.TargetApi;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.DragEvent;
@@ -17,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils;
 import com.jcertif.relooking.graphics.CanvasDimensions;
 import com.jcertif.relooking.graphics.ICanvasOperation;
@@ -37,9 +40,12 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     //FrameLayout mainCanvas;
     GridView palette;
     PaletteAdapter paletteAdapter;
-
-
     List<Drawable> drawablesList;
+
+    private FloatingActionButton btnHabits;
+    SlidingPaneLayout paletteContainer;
+
+    ItemsUtils.ItemType selectedType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +63,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
 
-
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        paletteContainer=(SlidingPaneLayout) findViewById(R.id.paletteContainer);
+        btnHabits=(FloatingActionButton)findViewById(R.id.pick_robe);
 
     //  mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
       //  palette=(GridView)findViewById(R.id.palette);
@@ -67,22 +74,40 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         drawablesList=new ArrayList<>();
         paletteAdapter=new PaletteAdapter(this,drawablesList);
 
+        palette=(GridView)findViewById(R.id.palette_grid);
 
-       getSupportActionBar().hide();
+        palette.setAdapter(paletteAdapter);
+
+        btnHabits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(selectedType== ItemsUtils.ItemType.CLOTHES){
+                    paletteContainer.openPane();
+                    return;
+                }
+                new ItemLoaderTak().execute(ItemsUtils.ItemType.CLOTHES);
+            }
+        });
+
+
+      // getSupportActionBar().hide();
 
 
     }
 
 
-     List<Drawable>  loadItems(ItemsUtils.ItemType type){
+     List<Drawable>  loadItems(ItemsUtils.ItemType type) throws Resources.NotFoundException {
 
-        for(int i=0;i<ItemsUtils.getItemCount(type);i++){
+
+         String resBasename=ItemsUtils.getBaseName(type);
+
+        for(int i=1;i<=ItemsUtils.getItemCount(type);i++){
 
             Drawable drawable = getResources().getDrawable(getResources()
-                    .getIdentifier(ItemsUtils.getBaseName(type)+i, "drawable", getPackageName()));
+                    .getIdentifier(resBasename+i, "drawable", getPackageName()));
 
             if(drawable==null){
-
                 continue;
 
             }else{
@@ -132,6 +157,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
             drawablesList=list;
             paletteAdapter.notifyDataSetChanged();
+
+            paletteContainer.openPane();
         }
     }
 

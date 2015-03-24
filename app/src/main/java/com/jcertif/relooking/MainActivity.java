@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,9 +18,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -35,9 +34,10 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
-public class MainActivity extends ActionBarActivity implements ICanvasOperation, View.OnDragListener, IResizable,View.OnClickListener {
+public class MainActivity extends ActionBarActivity implements ICanvasOperation, View.OnDragListener, IResizable, View.OnClickListener {
 
     Toolbar mToolbar;
 
@@ -48,10 +48,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
 
     private FloatingActionsMenu mFabButton;
-    private FloatingActionButton btnHabits;
+    private FloatingActionButton fabHabits,fabYeux,fabSouliers,fabBouche,fabCheveux;
 
     SlidingPaneLayout paletteContainer;
-    ItemsUtils.ItemType selectedType;
+    static ItemsUtils.ItemType selectedType= ItemsUtils.ItemType.CLOTHES;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,94 +69,141 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
 
-        mToolbar =(Toolbar)findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        paletteContainer=(SlidingPaneLayout) findViewById(R.id.paletteContainer);
-        btnHabits=(FloatingActionButton)findViewById(R.id.pick_robe);
-        mFabButton =(FloatingActionsMenu)findViewById(R.id.floating_menu);
+        paletteContainer = (SlidingPaneLayout) findViewById(R.id.paletteContainer);
 
-        drawablesList=new ArrayList<>();
-        paletteAdapter=new PaletteAdapter(this,drawablesList);
+        mFabButton = (FloatingActionsMenu) findViewById(R.id.floating_menu);
 
-        palette=(GridView)findViewById(R.id.palette_grid);
+        fabHabits = (FloatingActionButton) findViewById(R.id.pick_robe);
+        fabYeux = (FloatingActionButton) findViewById(R.id.pick_yeux);
+        fabBouche = (FloatingActionButton) findViewById(R.id.pick_bouche);
+        fabSouliers = (FloatingActionButton) findViewById(R.id.pick_souliers);
+        fabCheveux= (FloatingActionButton) findViewById(R.id.pick_cheveux);
+
+        drawablesList = new ArrayList<>();
+        paletteAdapter = new PaletteAdapter(this, drawablesList);
+
+        palette = (GridView) findViewById(R.id.palette_grid);
 
         palette.setAdapter(paletteAdapter);
 
-        btnHabits.setOnClickListener(this);
+         setupClickListener(fabBouche, fabHabits, fabSouliers, fabYeux,fabCheveux);
 
         mFabButton.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                getSupportActionBar().show();
+               showToolBar();
             }
 
             @Override
             public void onMenuCollapsed() {
 
-                 getSupportActionBar().hide();
+               hideToolBar();
             }
         });
 
-        getSupportActionBar().hide();
 
 
+                hideToolBar();
 
+        startSelectingItem(selectedType);
     }
 
 
-     List<Drawable>  loadItems(ItemsUtils.ItemType type) throws Resources.NotFoundException {
 
 
-         String resBasename=ItemsUtils.getBaseName(type);
+    void setupClickListener(FloatingActionButton... fabs){
 
-        for(int i=1;i<=ItemsUtils.getItemCount(type);i++){
+        for(FloatingActionButton b:fabs){
+            b.setOnClickListener(this);
+        }
+
+    }
+
+    List<Drawable> loadItems(ItemsUtils.ItemType type) throws Resources.NotFoundException {
+
+
+        String resBasename = ItemsUtils.getBaseName(type);
+
+        for (int i = 1; i <= ItemsUtils.getItemCount(type); i++) {
 
             Drawable drawable = getResources().getDrawable(getResources()
-                    .getIdentifier(resBasename+i, "drawable", getPackageName()));
+                    .getIdentifier(resBasename + i, "drawable", getPackageName()));
 
-            if(drawable==null){
+            if (drawable == null) {
                 continue;
 
-            }else{
+            } else {
 
                 drawablesList.add(drawable);
             }
 
         }
 
-        return  drawablesList;
+        return drawablesList;
 
     }
 
-        @Override
-        public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
 
-        if(v instanceof FloatingActionButton){
+        if (v instanceof FloatingActionButton) {
+
             mFabButton.collapse();
-            if(getSupportActionBar().isShowing()){
-                getSupportActionBar().hide();
+            if (getSupportActionBar().isShowing()) {
+             hideToolBar();
             }
 
 
         }
-              if (v.getId()==btnHabits.getId()) {
+        if (v.getId() == fabHabits.getId()) {
+
+        startSelectingItem(ItemsUtils.ItemType.CLOTHES);
+
+        }
+
+        if (v.getId() == fabYeux.getId()) {
+
+            startSelectingItem(ItemsUtils.ItemType.EYES);
+
+        }
+
+        if (v.getId() == fabBouche.getId()) {
+
+            startSelectingItem(ItemsUtils.ItemType.LIPS);
+
+        }
+
+        if (v.getId() == fabSouliers.getId()) {
+
+            startSelectingItem(ItemsUtils.ItemType.SHOES);
+
+        }
+
+        if (v.getId() == fabCheveux.getId()) {
+
+            startSelectingItem(ItemsUtils.ItemType.HAIR);
+
+        }
+    }
 
 
-            if (selectedType == ItemsUtils.ItemType.CLOTHES) {
-                      paletteContainer.openPane();
-                         return;
-             }
-                  new ItemLoaderTak().execute(ItemsUtils.ItemType.CLOTHES);
+     void startSelectingItem(ItemsUtils.ItemType type){
 
+         if (selectedType.equals(type)) {
+             paletteContainer.openPane();
+             return;
+         }else{
+             selectedType=type;
+         }
+         new ItemLoaderTak().execute(type);
 
-           }}
+         return;
+     }
 
-
-
-
-
-    class ItemLoaderTak extends AsyncTask<ItemsUtils.ItemType ,Integer, List<Drawable>> {
+    class ItemLoaderTak extends AsyncTask<ItemsUtils.ItemType, Integer, List<Drawable>> {
 
 
         @Override
@@ -164,10 +211,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
             List<Drawable> list;
 
-            list=loadItems(type[0]);
+            list = loadItems(type[0]);
 
-            if(list==null){
-                list=new ArrayList<>();
+            if (list == null) {
+                list = new ArrayList<>();
             }
 
             return list;
@@ -184,13 +231,14 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         }
 
         @Override
-        protected void onPostExecute( List<Drawable> list) {
+        protected void onPostExecute(List<Drawable> list) {
             super.onPostExecute(list);
 
-            drawablesList=list;
-            paletteAdapter.notifyDataSetChanged();
+             drawablesList=list;
 
-            paletteContainer.openPane();
+                palette.setAdapter(new PaletteAdapter(MainActivity.this,drawablesList));
+
+             paletteContainer.openPane();
         }
     }
 
@@ -201,9 +249,6 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
-
 
 
     @Override
@@ -229,7 +274,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         imgView.setImageDrawable(getResources().getDrawable(item.getResourceId()));
 
-      //  mainCanvas.addView(imgView);
+        //  mainCanvas.addView(imgView);
 
 
     }
@@ -237,8 +282,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     @Override
     public void removeItem(RelookingItem item) {
 
-     //   mainCanvas.removeViewAt(item.getResourceId());
-      //  mainCanvas.refreshDrawableState();
+        //   mainCanvas.removeViewAt(item.getResourceId());
+        //  mainCanvas.refreshDrawableState();
 
     }
 
@@ -277,6 +322,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     /**
      * Pour rendre la bare des status
+     *
      * @param on
      */
     @TargetApi(19)
@@ -291,6 +337,33 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
             winParams.flags &= ~bits;
         }
         win.setAttributes(winParams);
+    }
+
+
+    void hideToolBar(){
+
+        Handler handler=    new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                getSupportActionBar().hide();
+            }
+        },600);
+    }
+
+    void showToolBar(){
+
+        Handler handler=    new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                getSupportActionBar().show();
+            }
+        },600);
     }
 
 }

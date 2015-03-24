@@ -4,5 +4,4 @@
         android:layout_height="wrap_content"
         android:src="@drawable/noir01"
         android:id="@+id/palette_image"
-    android:adjustViewBounds="true"
     android:layout_gravity="center"/>

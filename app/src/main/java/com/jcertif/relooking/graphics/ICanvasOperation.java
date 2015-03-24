@@ -10,8 +10,11 @@ public interface ICanvasOperation {
 
 
     void addItem(RelookingItem item);
+
     void removeItem(RelookingItem item);
+
     void changeAvatar(Avatar avatar);
+
     void upDateDimensions(CanvasDimensions newDimensions);
 
 

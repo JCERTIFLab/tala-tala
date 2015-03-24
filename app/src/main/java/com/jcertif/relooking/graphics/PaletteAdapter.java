@@ -15,25 +15,23 @@ import java.util.List;
 
 
 /**
- *
  * Created by bashizip on 23/03/2015.
- *
  */
-public  class PaletteAdapter extends BaseAdapter {
+public class PaletteAdapter extends BaseAdapter {
 
     private List<Drawable> itemList;
     private LayoutInflater mLayoutInflater;
     private Context ctx;
 
-    private ViewHolder holder;
+
 
     public PaletteAdapter(Context ctx, List<Drawable> itemList) {
-        this.ctx=ctx;
-        this.itemList=itemList;
+        this.ctx = ctx;
+        this.itemList = itemList;
     }
 
     public PaletteAdapter(List<Drawable> itemList) {
-        this.itemList=itemList;
+        this.itemList = itemList;
     }
 
     @Override
@@ -48,26 +46,29 @@ public  class PaletteAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position+1;
+        return position + 1;
 
     }
 
 
-
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
+        ViewHolder holder;
 
         if (convertView == null) {
 
-            holder=new ViewHolder();
+            holder = new ViewHolder();
+
             convertView = LayoutInflater.from(ctx).inflate(
                     R.layout.palette_item, parent, false);
 
             holder.mImageView = (ImageView) convertView.findViewById((R.id.palette_image));
 
-           convertView.setTag(holder);
+            convertView.setTag(holder);
 
-        }else{
-            holder=(ViewHolder)convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
 
         }
 
@@ -79,8 +80,8 @@ public  class PaletteAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private static class ViewHolder {
-        public ImageView mImageView;
+     static class ViewHolder {
+         ImageView mImageView;
 
     }
 }

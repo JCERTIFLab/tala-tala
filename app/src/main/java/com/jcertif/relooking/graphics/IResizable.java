@@ -8,18 +8,21 @@ public interface IResizable {
 
     /**
      * Resize item
+     *
      * @param ratio (in percentage)
      */
     public abstract void resize(float ratio);
 
     /**
      * Rotation
+     *
      * @param angle (radians)
      */
-    public abstract  void rotate(float angle);
+    public abstract void rotate(float angle);
 
     /**
      * Translation from coordinates(x0,y0) to (x1,y1)
+     *
      * @param x0
      * @param y0
      * @param x1

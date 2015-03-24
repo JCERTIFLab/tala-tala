@@ -51,6 +51,20 @@ android:id="@+id/paletteContainer"
         fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_labelsPosition="left">
 
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_cheveux"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            fab:fab_icon="@drawable/bouton5"
+            fab:fab_stroke_visible   ="true"
+            fab:fab_size="normal"
+            fab:fab_title="Cheveux"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            />
+
  <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/pick_yeux"
             android:layout_width="wrap_content"

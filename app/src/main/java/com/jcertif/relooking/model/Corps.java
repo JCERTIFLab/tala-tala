@@ -4,7 +4,6 @@ import android.content.Context;
 
 /**
  * Created by bashizip on 23/03/2015.
- *
  */
 public class Corps extends RelookingItem {
 

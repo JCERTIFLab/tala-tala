@@ -2,14 +2,12 @@ package com.jcertif.relooking.com.jcertif.relooking.utils;
 
 /**
  * Created by bashizip on 23/03/2015.
- *
  */
 public class ItemsUtils {
 
 
-
     public enum ItemType {
-        HAIR, EYES, CLOTHES, SHOES, MAKEUP, AVATAR, BODY;
+        HAIR, EYES, CLOTHES, SHOES, MAKEUP, AVATAR, LIPS,BODY;
     }
 
     public static int getItemCount(ItemType type) {
@@ -19,11 +17,16 @@ public class ItemsUtils {
         switch (type) {
 
             case HAIR:
-                count = 13;
+                count = 10;
                 break;
             case EYES:
-                count = 5;
+                count = 7;
                 break;
+
+            case LIPS:
+                count = 3;
+                break;
+
 
             case CLOTHES:
                 count = 15;
@@ -65,12 +68,15 @@ public class ItemsUtils {
                 name = "maquillage";
                 break;
             case SHOES:
-                name = "soulier";
+                name = "chaussure";
                 break;
             case AVATAR:
                 name = "background";
                 break;
 
+            case LIPS:
+                name = "levre";
+                break;
         }
 
         return name;

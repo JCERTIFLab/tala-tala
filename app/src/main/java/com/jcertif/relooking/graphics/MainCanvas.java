@@ -8,18 +8,16 @@ import com.jcertif.relooking.model.Avatar;
 import com.jcertif.relooking.model.RelookingItem;
 
 /**
- *
  * Represente la scene principale des operations
  * Contient l'avatar et les items qui y sont ajoutEs
- *
+ * <p/>
  * Created by bashizip on 20/03/2015.
- *
  */
 public class MainCanvas extends FrameLayout implements ICanvasOperation {
 
 
-    private  Avatar avatar;
-    private  CanvasDimensions dimensions;
+    private Avatar avatar;
+    private CanvasDimensions dimensions;
 
 
     public MainCanvas(Context context) {

@@ -5,12 +5,12 @@
     android:background="@color/colorPrimaryLight">
 
     <GridView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/palette_grid"
         android:layout_gravity="center_horizontal"
         android:scrollbarStyle="outsideOverlay"
         android:padding="4dp"
-        android:numColumns="3"
+        android:numColumns="2"
         tools:listitem="@layout/palette_item"/>
 </LinearLayout>

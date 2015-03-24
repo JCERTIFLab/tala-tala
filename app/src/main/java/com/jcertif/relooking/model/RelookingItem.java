@@ -9,15 +9,14 @@ import com.jcertif.relooking.graphics.IResizable;
 
 /**
  * Classe mere de tous les items impliquEs dans le relooking
- *
- *
+ * <p/>
+ * <p/>
  * Created by bashizip on 20/03/2015.
- *
  */
-public  abstract  class  RelookingItem implements View.OnDragListener, IResizable {
+public abstract class RelookingItem implements View.OnDragListener, IResizable {
 
 
-    private  int resourceId;
+    private int resourceId;
 
     private Context context;
     private static ItemType type;
@@ -29,16 +28,15 @@ public  abstract  class  RelookingItem implements View.OnDragListener, IResizabl
     }
 
 
-
     public int getResourceId() {
         resourceId = context.getApplicationContext().getResources().getIdentifier(getFileName(), "drawable", context.getApplicationContext().getPackageName());
         return resourceId;
     }
 
 
-    public abstract  String getFileName();
+    public abstract String getFileName();
 
-       public  abstract  int getItemsCount();
+    public abstract int getItemsCount();
 
     public ItemType getType() {
         return type;

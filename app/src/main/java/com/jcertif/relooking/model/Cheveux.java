@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * Created by bashizip on 23/03/2015.
  */
-public class Cheveux extends RelookingItem{
+public class Cheveux extends RelookingItem {
 
 
     protected Cheveux(Context context) {

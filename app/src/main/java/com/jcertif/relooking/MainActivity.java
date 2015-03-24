@@ -3,8 +3,8 @@ package com.jcertif.relooking;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.DragEvent;
 import android.view.Menu;
@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     Toolbar toolbar;
 
-    FrameLayout mainCanvas;
+    //FrameLayout mainCanvas;
     GridView palette;
     PaletteAdapter paletteAdapter;
 
@@ -55,8 +55,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
-        palette=(GridView)findViewById(R.id.palette);
+    //  mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
+      //  palette=(GridView)findViewById(R.id.palette);
 
         drawablesList=new ArrayList<>();
         paletteAdapter=new PaletteAdapter(this,drawablesList);
@@ -70,15 +70,12 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
 
 
-    public List<Drawable>  loadItems(ItemsUtils.ItemType type){
+     List<Drawable>  loadItems(ItemsUtils.ItemType type){
 
         for(int i=0;i<ItemsUtils.getItemCount(type);i++){
 
-
             Drawable drawable = getResources().getDrawable(getResources()
                     .getIdentifier(ItemsUtils.getBaseName(type)+i, "drawable", getPackageName()));
-
-
 
             if(drawable==null){
 
@@ -89,34 +86,12 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
                 drawablesList.add(drawable);
             }
 
-
-
         }
 
         return  drawablesList;
 
-
     }
 
-    @Override
-    public void resize(float ratio) {
-
-    }
-
-    @Override
-    public void rotate(float angle) {
-
-    }
-
-    @Override
-    public void translate(float x0, float y0, float x1, float y1) {
-
-    }
-
-    @Override
-    public boolean onDrag(View v, DragEvent event) {
-        return false;
-    }
 
 
 
@@ -191,7 +166,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         imgView.setImageDrawable(getResources().getDrawable(item.getResourceId()));
 
-        mainCanvas.addView(imgView);
+      //  mainCanvas.addView(imgView);
 
 
     }
@@ -199,8 +174,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     @Override
     public void removeItem(RelookingItem item) {
 
-        mainCanvas.removeViewAt(item.getResourceId());
-        mainCanvas.refreshDrawableState();
+     //   mainCanvas.removeViewAt(item.getResourceId());
+      //  mainCanvas.refreshDrawableState();
 
     }
 
@@ -215,6 +190,27 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         //zooming
 
     }
+
+    @Override
+    public void resize(float ratio) {
+
+    }
+
+    @Override
+    public void rotate(float angle) {
+
+    }
+
+    @Override
+    public void translate(float x0, float y0, float x1, float y1) {
+
+    }
+
+    @Override
+    public boolean onDrag(View v, DragEvent event) {
+        return false;
+    }
+
 
     /**
      * Pour rendre la bare des status

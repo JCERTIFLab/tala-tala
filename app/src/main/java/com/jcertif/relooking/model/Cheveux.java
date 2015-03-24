@@ -1,7 +1,6 @@
 package com.jcertif.relooking.model;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 
 /**
  * Created by bashizip on 23/03/2015.

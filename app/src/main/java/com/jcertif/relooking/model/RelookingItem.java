@@ -5,7 +5,6 @@ import android.view.DragEvent;
 import android.view.View;
 
 import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils.ItemType;
-import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils;
 import com.jcertif.relooking.graphics.IResizable;
 
 /**

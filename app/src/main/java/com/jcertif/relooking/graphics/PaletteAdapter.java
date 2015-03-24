@@ -9,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import  java.util.List;
-
 import com.jcertif.relooking.R;
-import com.jcertif.relooking.model.RelookingItem;
+
+import java.util.List;
 
 
 /**

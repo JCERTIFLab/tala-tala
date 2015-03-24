@@ -1,11 +1,8 @@
 package com.jcertif.relooking.graphics;
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.jcertif.relooking.model.Avatar;
 import com.jcertif.relooking.model.RelookingItem;

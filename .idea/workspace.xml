@@ -42,22 +42,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2981cb28-d981-440e-887e-201c64a84bd9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/palette.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/ItemType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/cheveux.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/cheveux.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/cheveux.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/cheveux.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/cheveux.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/cheveux.png" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/com/jcertif/relooking/utils/DrawableUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/com/jcertif/relooking/utils/ItemsUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_relooking.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_boutons.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/IResizable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/IResizable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/PaletteAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/graphics/PaletteAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/jcertif/relooking/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/jcertif/relooking/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/RelookingItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/model/RelookingItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/media/RelookingItemsFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/media/RelookingItemsFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Relooking.iws" />
@@ -84,8 +69,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.4733095" vertical-offset="210" max-vertical-offset="3600">
-              <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.48398575" vertical-offset="2757" max-vertical-offset="3645">
+              <caret line="211" column="13" selection-start-line="211" selection-start-column="13" selection-end-line="211" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2795#2796#0" expanded="true" />
@@ -1304,7 +1289,11 @@
       <created>1427180264020</created>
       <updated>1427180264022</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Chargement des images dans la palette et Refactorings pour simplifier  l'archi.">
+      <created>1427189367170</created>
+      <updated>1427189367170</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1329,7 +1318,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="211" y="22" width="1568" height="987" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496318" sideWeight="0.5008726" order="2" side_tool="true" content_ui="tabs" />
@@ -1351,7 +1340,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32798165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32146958" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22214942" sideWeight="0.4991274" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22214942" sideWeight="0.4991274" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1417,7 +1406,8 @@
     <MESSAGE value="Main Canvas definition." />
     <MESSAGE value="Simplifications et ajout partiel des images" />
     <MESSAGE value="Integration de toutes les  images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Integration de toutes les  images" />
+    <MESSAGE value="Chargement des images dans la palette et Refactorings pour simplifier  l'archi." />
+    <option name="LAST_COMMIT_MESSAGE" value="Chargement des images dans la palette et Refactorings pour simplifier  l'archi." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1823,8 +1813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jcertif/relooking/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4733095" vertical-offset="210" max-vertical-offset="3600">
-          <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.48398575" vertical-offset="2757" max-vertical-offset="3645">
+          <caret line="211" column="13" selection-start-line="211" selection-start-column="13" selection-end-line="211" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2795#2796#0" expanded="true" />

@@ -216,7 +216,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     }
 
-
+    /**
+     * Pour rendre la bare des status
+     * @param on
+     */
     @TargetApi(19)
     private void setTranslucentStatus(boolean on) {
 

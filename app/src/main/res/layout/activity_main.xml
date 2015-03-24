@@ -5,34 +5,96 @@
     android:layout_height="match_parent"
     tools:context="com.jcertif.relooking.MainActivity"
     android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_vertical|center"
-    android:background="@drawable/background3"
+android:fitsSystemWindows="true"
+    android:animateLayoutChanges="true"
+
+
    >
 
-    <include layout="@layout/toolbar"></include>
+    <include layout="@layout/toolbar"
+       ></include>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:background="@drawable/background3"
+       >
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/background2"
         android:adjustViewBounds="true"
-        android:layout_gravity="center"
+        android:layout_gravity="start"
         android:layout_weight="1"
+
         />
 
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/pink_icon"
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        fab:fab_icon="@drawable/ic_fab_star"
-        fab:fab_colorNormal="@color/colorPrimary"
-        fab:fab_colorPressed="@color/colorPrimaryDark"
-        android:layout_gravity="right"
-        android:layout_margin="16dp"/>
+        fab:fab_addButtonColorNormal="@color/colorPrimary"
+        fab:fab_addButtonColorPressed="@color/colorPrimaryDark"
+        fab:fab_addButtonPlusIconColor="@color/colorIcons"
+        fab:fab_addButtonSize="normal"
+        android:layout_gravity="bottom"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="left">
+
+ <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_yeux"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/bouton8"
+            android:layout_weight="0"
+            fab:fab_title="Yeux"
+            fab:fab_size="normal"
+     fab:fab_colorNormal="@color/colorAccent"
+     fab:fab_colorPressed="@color/colorPrimaryDark"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_souliers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/bouton3"
+            android:layout_weight="0"
+            fab:fab_title="Souliers"
+            fab:fab_size="normal"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_robe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/bouton2"
+            android:layout_weight="0"
+            fab:fab_title="Habits"
+            fab:fab_size="normal"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+        />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_bouche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            fab:fab_icon="@drawable/bouton1"
+            fab:fab_stroke_visible   ="true"
+            fab:fab_size="normal"
+            fab:fab_title="Bouche"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+         />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </LinearLayout>
 
 </LinearLayout>
 

@@ -3,6 +3,7 @@ package com.jcertif.relooking;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
+
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -47,6 +48,11 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         setContentView(R.layout.activity_main);
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+
+
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
@@ -62,12 +68,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         paletteAdapter=new PaletteAdapter(this,drawablesList);
 
 
-        getSupportActionBar().hide();
+       getSupportActionBar().hide();
 
 
     }
-
-
 
 
      List<Drawable>  loadItems(ItemsUtils.ItemType type){

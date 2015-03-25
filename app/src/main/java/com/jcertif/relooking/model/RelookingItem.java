@@ -1,6 +1,7 @@
 package com.jcertif.relooking.model;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View;
 
@@ -16,50 +17,30 @@ import com.jcertif.relooking.graphics.IResizable;
 public abstract class RelookingItem implements View.OnDragListener, IResizable {
 
 
-    private int resourceId;
+    private  ItemType type;
+    private Drawable drawable;
 
-    private Context context;
-    private static ItemType type;
-    private float width;
-    private float height;
 
-    protected RelookingItem(Context context) {
-        this.context = context;
+    protected RelookingItem(ItemType type, Drawable drawable) {
+        this.type = type;
+        this.drawable = drawable;
     }
-
-
-    public int getResourceId() {
-        resourceId = context.getApplicationContext().getResources().getIdentifier(getFileName(), "drawable", context.getApplicationContext().getPackageName());
-        return resourceId;
-    }
-
-
-    public abstract String getFileName();
-
-    public abstract int getItemsCount();
 
     public ItemType getType() {
         return type;
     }
 
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+
     public void setType(ItemType type) {
         this.type = type;
     }
 
-    public float getWidth() {
-        return width;
-    }
-
-    public void setWidth(float width) {
-        this.width = width;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
     }
 
     @Override

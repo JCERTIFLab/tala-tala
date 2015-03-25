@@ -22,6 +22,7 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -30,7 +31,6 @@ import com.jcertif.relooking.graphics.CanvasDimensions;
 import com.jcertif.relooking.graphics.ICanvasOperation;
 import com.jcertif.relooking.graphics.IResizable;
 import com.jcertif.relooking.graphics.PaletteAdapter;
-import com.jcertif.relooking.model.Avatar;
 import com.jcertif.relooking.model.RelookingItem;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -57,6 +57,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     static ItemsUtils.ItemType selectedType = ItemsUtils.ItemType.DEFAULT;
 
     private MyDragListener dragListener;
+
+    List<ItemsUtils.ItemType> itemTypeAlreadyAdded=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +121,58 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     }
 
+
+    boolean isTypeAdded(ItemsUtils.ItemType type){
+
+        for(ItemsUtils.ItemType test:itemTypeAlreadyAdded){
+            if(test.equals(type)){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        if(!paletteContainer.isOpen()){
+            return; //capital puisque le slidingDrawer meme invisbile est accessible
+        }
+
+        Drawable item=(Drawable)parent.getItemAtPosition(position);
+/*
+        if(isTypeAdded(selectedType)){
+
+            //replacer par un item de meme type et non surcharger !
+
+            return;
+        }*/
+
+
+    if(itemTypeAlreadyAdded.size()==5){
+
+        Toast.makeText(this,"Retirez un item d'abord",Toast.LENGTH_SHORT).show();
+
+        paletteContainer.closePane();
+        return;
+    }
+
+        ImageView imgView = new ImageView(this);
+        //  imgView.setId(item.g);
+        imgView.setImageDrawable(item);
+        imgView.setAdjustViewBounds(true);
+
+        mainCanvas.addView(imgView);
+
+        mainCanvas.refreshDrawableState();
+
+        paletteContainer.closePane();
+
+        itemTypeAlreadyAdded.add(selectedType);
+    }
 
     void setupClickListener(FloatingActionButton... fabs) {
 
@@ -281,12 +335,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     @Override
     public void addItem(RelookingItem item) {
 
-        ImageView imgView = new ImageView(this);
-        imgView.setId(item.getResourceId());
 
-        imgView.setImageDrawable(getResources().getDrawable(item.getResourceId()));
-
-          mainCanvas.addView(imgView);
 
 
     }
@@ -294,15 +343,15 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     @Override
     public void removeItem(RelookingItem item) {
 
-          mainCanvas.removeViewAt(item.getResourceId());
-         mainCanvas.refreshDrawableState();
+
 
     }
 
     @Override
-    public void changeAvatar(Avatar avatar) {
+    public void changeAvatar(RelookingItem avatar) {
 
     }
+
 
     @Override
     public void upDateDimensions(CanvasDimensions newDimensions) {
@@ -349,9 +398,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     void hideToolBar() {
 
-        Handler handler = new Handler();
+       new Handler()
 
-        handler.postDelayed(new Runnable() {
+        .postDelayed(new Runnable() {
             @Override
             public void run() {
 
@@ -362,15 +411,15 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     void showToolBar() {
 
-        Handler handler = new Handler();
+        new Handler()
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+                .postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                getSupportActionBar().show();
-            }
-        }, 600);
+                        getSupportActionBar().show();
+                    }
+                }, 600);
     }
 
 
@@ -434,22 +483,6 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
 
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        Drawable item=(Drawable)parent.getItemAtPosition(position);
-
-        ImageView imgView = new ImageView(this);
-      //  imgView.setId(item.g);
-        imgView.setImageDrawable(item);
-        imgView.setAdjustViewBounds(true);
-
-        mainCanvas.addView(imgView);
-
-        mainCanvas.refreshDrawableState();
-
-        paletteContainer.closePane();
-    }
 
 
 

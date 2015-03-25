@@ -89,18 +89,6 @@ public class PaletteAdapter extends BaseAdapter {
     }
 
 
-   /* @Override
-    public int getViewTypeCount() {
-
-        return getCount();
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-
-        return position;
-    }*/
-
      static class ViewHolder {
          ImageView mImageView;
 

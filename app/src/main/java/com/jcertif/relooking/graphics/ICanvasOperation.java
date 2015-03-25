@@ -1,6 +1,5 @@
 package com.jcertif.relooking.graphics;
 
-import com.jcertif.relooking.model.Avatar;
 import com.jcertif.relooking.model.RelookingItem;
 
 /**
@@ -13,7 +12,7 @@ public interface ICanvasOperation {
 
     void removeItem(RelookingItem item);
 
-    void changeAvatar(Avatar avatar);
+    void changeAvatar(RelookingItem avatar);
 
     void upDateDimensions(CanvasDimensions newDimensions);
 

@@ -19,13 +19,17 @@ android:id="@+id/paletteContainer"
 
         <include layout="@layout/palette"></include>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1"
         android:background="@drawable/background3"
        >
+
+        <FrameLayout
+            android:id="@+id/main_canvas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
     <ImageView
         android:id="@+id/avatar"
@@ -34,10 +38,16 @@ android:id="@+id/paletteContainer"
         android:src="@drawable/background2"
         android:adjustViewBounds="true"
         android:layout_gravity="start"
-        android:layout_weight="1"
 
         />
+        </FrameLayout>
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="8dp">
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/floating_menu"
@@ -49,21 +59,11 @@ android:id="@+id/paletteContainer"
         fab:fab_addButtonSize="normal"
         android:layout_gravity="bottom"
         fab:fab_labelStyle="@style/menu_labels_style"
-        fab:fab_labelsPosition="left">
+        fab:fab_labelsPosition="left"
+
+       >
 
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/pick_cheveux"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            fab:fab_icon="@drawable/bouton5"
-            fab:fab_stroke_visible   ="true"
-            fab:fab_size="normal"
-            fab:fab_title="Cheveux"
-            fab:fab_colorNormal="@color/colorAccent"
-            fab:fab_colorPressed="@color/colorPrimaryDark"
-            />
 
  <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/pick_yeux"
@@ -72,9 +72,35 @@ android:id="@+id/paletteContainer"
             fab:fab_icon="@drawable/bouton8"
             android:layout_weight="0"
             fab:fab_title="Yeux"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_colorNormal="@color/colorAccent"
              fab:fab_colorPressed="@color/colorPrimaryDark"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_bouche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            fab:fab_icon="@drawable/bouton1"
+            fab:fab_stroke_visible   ="true"
+            fab:fab_size="mini"
+            fab:fab_title="Bouche"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            />
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pick_cheveux"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            fab:fab_icon="@drawable/bouton5"
+            fab:fab_size="normal"
+            fab:fab_title="Cheveux"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
             />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -88,6 +114,9 @@ android:id="@+id/paletteContainer"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorPrimaryDark"
             />
+
+
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/pick_robe"
             android:layout_width="wrap_content"
@@ -98,23 +127,12 @@ android:id="@+id/paletteContainer"
             fab:fab_size="normal"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorPrimaryDark"
-        />
+            />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/pick_bouche"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            fab:fab_icon="@drawable/bouton1"
-            fab:fab_stroke_visible   ="true"
-            fab:fab_size="normal"
-            fab:fab_title="Bouche"
-            fab:fab_colorNormal="@color/colorAccent"
-            fab:fab_colorPressed="@color/colorPrimaryDark"
-         />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 
     </android.support.v4.widget.SlidingPaneLayout>
 </LinearLayout>

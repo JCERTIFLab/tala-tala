@@ -22,12 +22,9 @@ public class ItemsUtils {
             case EYES:
                 count = 7;
                 break;
-
             case LIPS:
                 count = 3;
                 break;
-
-
             case CLOTHES:
                 count = 15;
                 break;

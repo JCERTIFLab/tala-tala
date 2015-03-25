@@ -11,16 +11,17 @@ import android.widget.ImageView;
 
 import com.jcertif.relooking.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 /**
  * Created by bashizip on 23/03/2015.
+ *
  */
 public class PaletteAdapter extends BaseAdapter {
 
     private List<Drawable> itemList;
-    private LayoutInflater mLayoutInflater;
     private Context ctx;
 
 
@@ -46,10 +47,17 @@ public class PaletteAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position + 1;
+
+        return itemList.indexOf(getItem(position));
 
     }
 
+
+    public void updateModel(List<Drawable> newdrawableArrayList) {
+        itemList = newdrawableArrayList;
+        //Triggers the list update
+        notifyDataSetChanged();
+    }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -79,6 +87,19 @@ public class PaletteAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+
+   /* @Override
+    public int getViewTypeCount() {
+
+        return getCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
+    }*/
 
      static class ViewHolder {
          ImageView mImageView;

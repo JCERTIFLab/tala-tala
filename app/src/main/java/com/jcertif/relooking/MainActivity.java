@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,23 +38,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class MainActivity extends ActionBarActivity implements ICanvasOperation,  IResizable, View.OnClickListener {
+public class MainActivity extends ActionBarActivity implements ICanvasOperation, IResizable, View.OnClickListener,AdapterView.OnItemClickListener {
 
     Toolbar mToolbar;
 
-    //FrameLayout mainCanvas;
+    ImageView avatar;
     GridView palette;
     PaletteAdapter paletteAdapter;
     List<Drawable> drawablesList;
 
+    FrameLayout mainCanvas;
+
 
     private FloatingActionsMenu mFabButton;
-    private FloatingActionButton fabHabits,fabYeux,fabSouliers,fabBouche,fabCheveux;
+    private FloatingActionButton fabHabits, fabYeux, fabSouliers, fabBouche, fabCheveux;
 
     SlidingPaneLayout paletteContainer;
-    static ItemsUtils.ItemType selectedType= ItemsUtils.ItemType.DEFAULT;
-
+    static ItemsUtils.ItemType selectedType = ItemsUtils.ItemType.DEFAULT;
 
     private MyDragListener dragListener;
 
@@ -83,40 +85,44 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         fabYeux = (FloatingActionButton) findViewById(R.id.pick_yeux);
         fabBouche = (FloatingActionButton) findViewById(R.id.pick_bouche);
         fabSouliers = (FloatingActionButton) findViewById(R.id.pick_souliers);
-        fabCheveux= (FloatingActionButton) findViewById(R.id.pick_cheveux);
 
-        drawablesList = new ArrayList<>();
+        mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
+
+        fabCheveux = (FloatingActionButton) findViewById(R.id.pick_cheveux);
+
+        drawablesList=loadItems(ItemsUtils.ItemType.HAIR);
+
         paletteAdapter = new PaletteAdapter(this, drawablesList);
 
         palette = (GridView) findViewById(R.id.palette_grid);
 
         palette.setAdapter(paletteAdapter);
 
-         setupClickListener(fabBouche, fabHabits, fabSouliers, fabYeux,fabCheveux);
+        palette.setOnItemClickListener(this);
+
+        setupClickListener(fabBouche, fabHabits, fabSouliers, fabYeux, fabCheveux);
 
         mFabButton.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-               showToolBar();
+                showToolBar();
             }
 
             @Override
             public void onMenuCollapsed() {
 
-               hideToolBar();
+                hideToolBar();
             }
         });
-                hideToolBar();
+        hideToolBar();
 
-             //   startSelectingItem(selectedType);
+
     }
 
 
+    void setupClickListener(FloatingActionButton... fabs) {
 
-
-    void setupClickListener(FloatingActionButton... fabs){
-
-        for(FloatingActionButton b:fabs){
+        for (FloatingActionButton b : fabs) {
             b.setOnClickListener(this);
         }
 
@@ -124,10 +130,11 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     List<Drawable> loadItems(ItemsUtils.ItemType type) throws Resources.NotFoundException {
 
+        List<Drawable> loadItems=new ArrayList<>();
 
         String resBasename = ItemsUtils.getBaseName(type);
 
-        for (int i = 1; i <= ItemsUtils.getItemCount(type); i++) {
+        for (int i = 0 ; i < ItemsUtils.getItemCount(type); i++) {
 
             Drawable drawable = getResources().getDrawable(getResources()
                     .getIdentifier(resBasename + i, "drawable", getPackageName()));
@@ -137,12 +144,12 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
             } else {
 
-                drawablesList.add(drawable);
+                loadItems.add(drawable);
             }
 
         }
 
-        return drawablesList;
+        return loadItems;
 
     }
 
@@ -153,14 +160,14 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
             mFabButton.collapse();
             if (getSupportActionBar().isShowing()) {
-             hideToolBar();
+                hideToolBar();
             }
 
 
         }
         if (v.getId() == fabHabits.getId()) {
 
-        startSelectingItem(ItemsUtils.ItemType.CLOTHES);
+            startSelectingItem(ItemsUtils.ItemType.CLOTHES);
 
         }
 
@@ -190,25 +197,25 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
-     void startSelectingItem(ItemsUtils.ItemType type){
+    void startSelectingItem(ItemsUtils.ItemType type) {
 
-         if (selectedType.equals(type)) {
-             paletteContainer.openPane();
-             return;
-         }else{
-             selectedType=type;
+        if (selectedType.equals(type)) {
+            paletteContainer.openPane();
+            return;
+        } else {
+            selectedType = type;
 
-             new ItemLoaderTak().execute(type);
-         }
+            new ItemLoaderTak().execute(type);
+        }
 
-     }
+    }
+
 
     class ItemLoaderTak extends AsyncTask<ItemsUtils.ItemType, Integer, List<Drawable>> {
 
 
         @Override
         protected List<Drawable> doInBackground(ItemsUtils.ItemType... type) {
-
 
 
             drawablesList = loadItems(type[0]);
@@ -231,12 +238,18 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         }
 
         @Override
-        protected void onPostExecute(List<Drawable> list) {
+        protected void onPostExecute(final List<Drawable> list) {
             super.onPostExecute(list);
 
-            paletteContainer.openPane();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    paletteAdapter.updateModel(list);
 
-            paletteAdapter.notifyDataSetChanged();
+                    paletteContainer.openPane();
+                }
+            });
+
 
         }
     }
@@ -273,7 +286,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         imgView.setImageDrawable(getResources().getDrawable(item.getResourceId()));
 
-        //  mainCanvas.addView(imgView);
+          mainCanvas.addView(imgView);
 
 
     }
@@ -281,8 +294,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     @Override
     public void removeItem(RelookingItem item) {
 
-        //   mainCanvas.removeViewAt(item.getResourceId());
-        //  mainCanvas.refreshDrawableState();
+          mainCanvas.removeViewAt(item.getResourceId());
+         mainCanvas.refreshDrawableState();
 
     }
 
@@ -314,8 +327,6 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
-
-
     /**
      * Pour rendre la bare des status
      *
@@ -336,9 +347,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
-    void hideToolBar(){
+    void hideToolBar() {
 
-        Handler handler=    new Handler();
+        Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -346,12 +357,12 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
                 getSupportActionBar().hide();
             }
-        },600);
+        }, 600);
     }
 
-    void showToolBar(){
+    void showToolBar() {
 
-        Handler handler=    new Handler();
+        Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -359,11 +370,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
                 getSupportActionBar().show();
             }
-        },600);
+        }, 600);
     }
-
-
-
 
 
     class MyDragListener implements View.OnDragListener {
@@ -424,6 +432,24 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         }
     }
 
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Drawable item=(Drawable)parent.getItemAtPosition(position);
+
+        ImageView imgView = new ImageView(this);
+      //  imgView.setId(item.g);
+        imgView.setImageDrawable(item);
+        imgView.setAdjustViewBounds(true);
+
+        mainCanvas.addView(imgView);
+
+        mainCanvas.refreshDrawableState();
+
+        paletteContainer.closePane();
+    }
 
 
 

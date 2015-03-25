@@ -7,7 +7,7 @@ public class ItemsUtils {
 
 
     public enum ItemType {
-        HAIR, EYES, CLOTHES, SHOES, MAKEUP, AVATAR, LIPS,BODY;
+        HAIR, EYES, CLOTHES, SHOES, MAKEUP, AVATAR, LIPS,BODY,DEFAULT;
     }
 
     public static int getItemCount(ItemType type) {

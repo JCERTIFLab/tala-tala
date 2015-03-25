@@ -14,11 +14,12 @@ import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -36,7 +37,7 @@ import java.util.List;
 
 
 
-public class MainActivity extends ActionBarActivity implements ICanvasOperation, View.OnDragListener, IResizable, View.OnClickListener {
+public class MainActivity extends ActionBarActivity implements ICanvasOperation,  IResizable, View.OnClickListener {
 
     Toolbar mToolbar;
 
@@ -50,7 +51,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     private FloatingActionButton fabHabits,fabYeux,fabSouliers,fabBouche,fabCheveux;
 
     SlidingPaneLayout paletteContainer;
-    static ItemsUtils.ItemType selectedType= ItemsUtils.ItemType.CLOTHES;
+    static ItemsUtils.ItemType selectedType= ItemsUtils.ItemType.DEFAULT;
+
+
+    private MyDragListener dragListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +106,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
                hideToolBar();
             }
         });
-
-
-
                 hideToolBar();
 
-        startSelectingItem(selectedType);
+             //   startSelectingItem(selectedType);
     }
 
 
@@ -196,10 +197,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
              return;
          }else{
              selectedType=type;
-         }
-         new ItemLoaderTak().execute(type);
 
-         return;
+             new ItemLoaderTak().execute(type);
+         }
+
      }
 
     class ItemLoaderTak extends AsyncTask<ItemsUtils.ItemType, Integer, List<Drawable>> {
@@ -208,15 +209,15 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         @Override
         protected List<Drawable> doInBackground(ItemsUtils.ItemType... type) {
 
-            List<Drawable> list;
 
-            list = loadItems(type[0]);
 
-            if (list == null) {
-                list = new ArrayList<>();
+            drawablesList = loadItems(type[0]);
+
+            if (drawablesList == null) {
+                drawablesList = new ArrayList<>();
             }
 
-            return list;
+            return drawablesList;
         }
 
         @Override
@@ -233,11 +234,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         protected void onPostExecute(List<Drawable> list) {
             super.onPostExecute(list);
 
-             drawablesList=list;
+            paletteContainer.openPane();
 
-                palette.setAdapter(new PaletteAdapter(MainActivity.this,drawablesList));
+            paletteAdapter.notifyDataSetChanged();
 
-             paletteContainer.openPane();
         }
     }
 
@@ -313,10 +313,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     }
 
-    @Override
-    public boolean onDrag(View v, DragEvent event) {
-        return false;
-    }
+
 
 
     /**
@@ -364,5 +361,70 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
             }
         },600);
     }
+
+
+
+
+
+    class MyDragListener implements View.OnDragListener {
+
+        Drawable toDragShape;
+        Drawable targetShape;
+
+        MyDragListener(Drawable targetShape, Drawable toDragShape) {
+            this.targetShape = targetShape;
+            this.toDragShape = toDragShape;
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            int action = event.getAction();
+            switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    // do nothing
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    v.setBackgroundDrawable(toDragShape);
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    v.setBackgroundDrawable(targetShape);
+                    break;
+                case DragEvent.ACTION_DROP:
+                    // Dropped, reassign View to ViewGroup
+                    View view = (View) event.getLocalState();
+                    ViewGroup owner = (ViewGroup) view.getParent();
+                    owner.removeView(view);
+                    LinearLayout container = (LinearLayout) v;
+                    container.addView(view);
+                    view.setVisibility(View.VISIBLE);
+                    break;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    v.setBackgroundDrawable(targetShape);
+                default:
+                    break;
+            }
+            return true;
+        }
+
+        public Drawable getToDragShape() {
+            return toDragShape;
+        }
+
+        public void setToDragShape(Drawable toDragShape) {
+            this.toDragShape = toDragShape;
+        }
+
+        public Drawable getTargetShape() {
+            return targetShape;
+        }
+
+        public void setTargetShape(Drawable targetShape) {
+            this.targetShape = targetShape;
+        }
+    }
+
+
+
 
 }

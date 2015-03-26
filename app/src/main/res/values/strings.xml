@@ -4,5 +4,8 @@
     <string name="app_name">Tala-Tala</string>
     <string name="title_activity_main">@string/app_name</string>
     <string name="action_settings">Settings</string>
+    <string name="action_done">Terminer</string>
+    <string name="action_palette">Palette</string>
+    <string name="action_remove">Supprimer</string>
 
 </resources>

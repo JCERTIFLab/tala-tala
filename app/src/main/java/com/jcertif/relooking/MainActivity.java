@@ -40,6 +40,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity implements ICanvasOperation, IResizable, View.OnClickListener,AdapterView.OnItemClickListener {
 
+    private static final int MAX_ITEMS_ON_ON_CANVAS = 5;
     Toolbar mToolbar;
 
     ImageView avatar;
@@ -59,6 +60,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     private MyDragListener dragListener;
 
     List<ItemsUtils.ItemType> itemTypeAlreadyAdded=new ArrayList<>();
+
+    View selectedView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +155,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         }*/
 
 
-    if(itemTypeAlreadyAdded.size()==5){
+    if(itemTypeAlreadyAdded.size()==MAX_ITEMS_ON_ON_CANVAS){
 
         Toast.makeText(this,"Retirez un item d'abord",Toast.LENGTH_SHORT).show();
 
@@ -160,14 +163,34 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         return;
     }
 
-        ImageView imgView = new ImageView(this);
-        //  imgView.setId(item.g);
+        final ImageView imgView = new ImageView(this);
+        imgView.setId(itemTypeAlreadyAdded.size());
         imgView.setImageDrawable(item);
         imgView.setAdjustViewBounds(true);
 
+        imgView.setLongClickable(true);
+
+        imgView.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+
+                Toast.makeText(MainActivity.this,"lONG CLICK ON id: "+ imgView.getId(),Toast.LENGTH_SHORT).show();
+
+                selectedView=v;
+
+             //   imgView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_item_selected));
+
+                showToolBar();
+
+
+                return false;
+            }
+        });
+
         mainCanvas.addView(imgView);
 
-        mainCanvas.refreshDrawableState();
+      //  mainCanvas.refreshDrawableState();
 
         paletteContainer.closePane();
 
@@ -325,7 +348,14 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+             if (id == R.id.action_done) {
+            return true;
+        }
+
+
+        if (id == R.id.action_remove_item) {
+
+            mainCanvas.removeView(selectedView);
             return true;
         }
 

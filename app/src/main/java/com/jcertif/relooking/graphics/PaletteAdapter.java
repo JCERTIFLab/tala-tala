@@ -54,6 +54,10 @@ public class PaletteAdapter extends BaseAdapter {
 
 
     public void updateModel(List<Drawable> newdrawableArrayList) {
+
+        itemList=null;
+        System.gc();
+
         itemList = newdrawableArrayList;
         //Triggers the list update
         notifyDataSetChanged();

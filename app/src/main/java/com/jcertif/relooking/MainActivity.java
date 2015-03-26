@@ -92,6 +92,8 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         paletteContainer = (SlidingPaneLayout) findViewById(R.id.paletteContainer);
 
         mFabButton = (FloatingActionsMenu) findViewById(R.id.floating_menu);
@@ -165,7 +167,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
             @Override
             public boolean onLongClick(View v) {
 
-                Toast.makeText(MainActivity.this, "lONG CLICK ON id: " + imgView.getId(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(MainActivity.this, "lONG CLICK ON id: " + imgView.getId(), Toast.LENGTH_SHORT).show();
 
                 selectedView = v;
 

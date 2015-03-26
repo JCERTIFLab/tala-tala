@@ -1,6 +1,7 @@
 package com.jcertif.relooking;
 
 import android.annotation.TargetApi;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -29,6 +30,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.colorpicker.ColorPickerDialog;
+import com.android.colorpicker.ColorPickerSwatch;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.jcertif.relooking.com.jcertif.relooking.utils.ItemsUtils;
@@ -43,7 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements ICanvasOperation, IResizable, View.OnClickListener,AdapterView.OnItemClickListener {
+public class MainActivity extends ActionBarActivity implements ICanvasOperation, IResizable, View.OnClickListener, AdapterView.OnItemClickListener {
 
     private static final int MAX_ITEMS_ON_ON_CANVAS = 6;
     Toolbar mToolbar;
@@ -64,9 +67,11 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     private MyDragListener dragListener;
 
-   int itemTypeAlreadyAdded=0;
+    int itemTypeAlreadyAdded = 0;
 
     View selectedView;
+
+    private int mSelectedColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,11 +101,11 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         fabBouche = (FloatingActionButton) findViewById(R.id.pick_bouche);
         fabSouliers = (FloatingActionButton) findViewById(R.id.pick_souliers);
 
-        mainCanvas=(FrameLayout)findViewById(R.id.main_canvas);
+        mainCanvas = (FrameLayout) findViewById(R.id.main_canvas);
 
         fabCheveux = (FloatingActionButton) findViewById(R.id.pick_cheveux);
 
-        drawablesList=loadItems(ItemsUtils.ItemType.HAIR);
+        drawablesList = loadItems(ItemsUtils.ItemType.HAIR);
 
         paletteAdapter = new PaletteAdapter(this, drawablesList);
 
@@ -130,25 +135,23 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
-
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        if(!paletteContainer.isOpen()){
+        if (!paletteContainer.isOpen()) {
             return; //capital puisque le slidingDrawer meme invisbile est accessible
         }
 
-        Drawable item=(Drawable)parent.getItemAtPosition(position);
+        Drawable item = (Drawable) parent.getItemAtPosition(position);
 
 
-    if(itemTypeAlreadyAdded==MAX_ITEMS_ON_ON_CANVAS){
+        if (itemTypeAlreadyAdded == MAX_ITEMS_ON_ON_CANVAS) {
 
-        Toast.makeText(this,"Retirez un item d'abord",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Retirez un item d'abord", Toast.LENGTH_SHORT).show();
 
-        paletteContainer.closePane();
-        return;
-    }
+            paletteContainer.closePane();
+            return;
+        }
 
         final ImageView imgView = new ImageView(this);
         imgView.setId(itemTypeAlreadyAdded);
@@ -162,11 +165,11 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
             @Override
             public boolean onLongClick(View v) {
 
-                Toast.makeText(MainActivity.this,"lONG CLICK ON id: "+ imgView.getId(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "lONG CLICK ON id: " + imgView.getId(), Toast.LENGTH_SHORT).show();
 
-                selectedView=v;
+                selectedView = v;
 
-                  paintColor(imgView);
+              //  paintColor(imgView);
 
                 showToolBar();
 
@@ -177,9 +180,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         mainCanvas.addView(imgView);
 
-        selectedView=imgView;
+        selectedView = imgView;
 
-      //  mainCanvas.refreshDrawableState();
+        //  mainCanvas.refreshDrawableState();
 
         paletteContainer.closePane();
 
@@ -196,11 +199,11 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     List<Drawable> loadItems(ItemsUtils.ItemType type) throws Resources.NotFoundException {
 
-        List<Drawable> loadItems=new ArrayList<>();
+        List<Drawable> loadItems = new ArrayList<>();
 
         String resBasename = ItemsUtils.getBaseName(type);
 
-        for (int i = 0 ; i < ItemsUtils.getItemCount(type); i++) {
+        for (int i = 0; i < ItemsUtils.getItemCount(type); i++) {
 
             Drawable drawable = getResources().getDrawable(getResources()
                     .getIdentifier(resBasename + i, "drawable", getPackageName()));
@@ -337,14 +340,14 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-             if (id == R.id.action_done) {
+        if (id == R.id.action_done) {
             return true;
         }
 
 
         if (id == R.id.action_undo) {
 
-            if(itemTypeAlreadyAdded>=1){
+            if (itemTypeAlreadyAdded >= 1) {
                 mainCanvas.removeViewAt(itemTypeAlreadyAdded);
                 itemTypeAlreadyAdded--;
             }
@@ -354,9 +357,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         if (id == R.id.action_remove_all) {
 
-            if(itemTypeAlreadyAdded>0){
+            if (itemTypeAlreadyAdded > 0) {
 
-                while (itemTypeAlreadyAdded>0){
+                while (itemTypeAlreadyAdded > 0) {
                     mainCanvas.removeViewAt(itemTypeAlreadyAdded);
                     itemTypeAlreadyAdded--;
                 }
@@ -367,6 +370,14 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
             return true;
         }
 
+        if (id == R.id.action_palette) {
+
+            startPickingAcolor();
+
+            return true;
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -374,13 +385,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     public void addItem(RelookingItem item) {
 
 
-
-
     }
 
     @Override
     public void removeItem(RelookingItem item) {
-
 
 
     }
@@ -436,15 +444,15 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     void hideToolBar() {
 
-       new Handler()
+        new Handler()
 
-        .postDelayed(new Runnable() {
-            @Override
-            public void run() {
+                .postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                getSupportActionBar().hide();
-            }
-        }, 600);
+                        getSupportActionBar().hide();
+                    }
+                }, 600);
     }
 
     void showToolBar() {
@@ -461,13 +469,10 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
-    void paintColor(ImageView iv){
-       Drawable drawable =iv.getDrawable();
-//can use Color.parseColor(color) if color is a string
+    void paintColor(ImageView iv) {
+        Drawable drawable = iv.getDrawable();
 
-      //  drawable.setColorFilter(ColorFilter.parseColor("#9C27B0"));
-
-        drawable.setColorFilter(new PorterDuffColorFilter(this.getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.MULTIPLY));
+        drawable.setColorFilter(new PorterDuffColorFilter(mSelectedColor, PorterDuff.Mode.MULTIPLY));
     }
 
 
@@ -530,8 +535,44 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
+    void startPickingAcolor() {
+
+        ColorPickerDialog colorPickerDialog = ColorPickerDialog.newInstance(
+                R.string.color_picker_default_title,
+                colorChoice(), 0, 5,
+                isTablet() ? ColorPickerDialog.SIZE_LARGE : ColorPickerDialog.SIZE_SMALL);
+        colorPickerDialog.show(getFragmentManager(), "cal");
+
+     colorPickerDialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
+         @Override
+         public void onColorSelected(int color) {
+
+             mSelectedColor=color;
+
+             paintColor((ImageView) selectedView);
+         }
+     });
 
 
+    }
 
+    private boolean isTablet() {
+        return ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE);
+    }
+
+    public int[] colorChoice() {
+
+        int[] mColorChoices = null;
+        String[] color_array = this.getResources().
+                getStringArray(R.array.default_color_choice_values);
+
+        if (color_array != null && color_array.length > 0) {
+            mColorChoices = new int[color_array.length];
+            for (int i = 0; i < color_array.length; i++) {
+                mColorChoices[i] = Color.parseColor(color_array[i]);
+            }
+        }
+        return mColorChoices;
+    }
 
 }

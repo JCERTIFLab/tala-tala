@@ -39,6 +39,7 @@ android:id="@+id/paletteContainer"
         android:adjustViewBounds="true"
         android:layout_gravity="start"
 
+
         />
         </FrameLayout>
 

@@ -2,7 +2,12 @@ package com.jcertif.relooking;
 
 import android.annotation.TargetApi;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,7 +45,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity implements ICanvasOperation, IResizable, View.OnClickListener,AdapterView.OnItemClickListener {
 
-    private static final int MAX_ITEMS_ON_ON_CANVAS = 5;
+    private static final int MAX_ITEMS_ON_ON_CANVAS = 6;
     Toolbar mToolbar;
 
     ImageView avatar;
@@ -59,7 +64,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
     private MyDragListener dragListener;
 
-    List<ItemsUtils.ItemType> itemTypeAlreadyAdded=new ArrayList<>();
+   int itemTypeAlreadyAdded=0;
 
     View selectedView;
 
@@ -125,17 +130,6 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
 
-    boolean isTypeAdded(ItemsUtils.ItemType type){
-
-        for(ItemsUtils.ItemType test:itemTypeAlreadyAdded){
-            if(test.equals(type)){
-                return true;
-            }
-        }
-        return false;
-
-    }
-
 
 
     @Override
@@ -146,16 +140,9 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         }
 
         Drawable item=(Drawable)parent.getItemAtPosition(position);
-/*
-        if(isTypeAdded(selectedType)){
-
-            //replacer par un item de meme type et non surcharger !
-
-            return;
-        }*/
 
 
-    if(itemTypeAlreadyAdded.size()==MAX_ITEMS_ON_ON_CANVAS){
+    if(itemTypeAlreadyAdded==MAX_ITEMS_ON_ON_CANVAS){
 
         Toast.makeText(this,"Retirez un item d'abord",Toast.LENGTH_SHORT).show();
 
@@ -164,7 +151,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
     }
 
         final ImageView imgView = new ImageView(this);
-        imgView.setId(itemTypeAlreadyAdded.size());
+        imgView.setId(itemTypeAlreadyAdded);
         imgView.setImageDrawable(item);
         imgView.setAdjustViewBounds(true);
 
@@ -179,7 +166,7 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
                 selectedView=v;
 
-             //   imgView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_item_selected));
+                  paintColor(imgView);
 
                 showToolBar();
 
@@ -190,11 +177,13 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
 
         mainCanvas.addView(imgView);
 
+        selectedView=imgView;
+
       //  mainCanvas.refreshDrawableState();
 
         paletteContainer.closePane();
 
-        itemTypeAlreadyAdded.add(selectedType);
+        itemTypeAlreadyAdded++;
     }
 
     void setupClickListener(FloatingActionButton... fabs) {
@@ -353,9 +342,28 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
         }
 
 
-        if (id == R.id.action_remove_item) {
+        if (id == R.id.action_undo) {
 
-            mainCanvas.removeView(selectedView);
+            if(itemTypeAlreadyAdded>=1){
+                mainCanvas.removeViewAt(itemTypeAlreadyAdded);
+                itemTypeAlreadyAdded--;
+            }
+
+            return true;
+        }
+
+        if (id == R.id.action_remove_all) {
+
+            if(itemTypeAlreadyAdded>0){
+
+                while (itemTypeAlreadyAdded>0){
+                    mainCanvas.removeViewAt(itemTypeAlreadyAdded);
+                    itemTypeAlreadyAdded--;
+                }
+
+
+            }
+
             return true;
         }
 
@@ -450,6 +458,16 @@ public class MainActivity extends ActionBarActivity implements ICanvasOperation,
                         getSupportActionBar().show();
                     }
                 }, 600);
+    }
+
+
+    void paintColor(ImageView iv){
+       Drawable drawable =iv.getDrawable();
+//can use Color.parseColor(color) if color is a string
+
+      //  drawable.setColorFilter(ColorFilter.parseColor("#9C27B0"));
+
+        drawable.setColorFilter(new PorterDuffColorFilter(this.getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.MULTIPLY));
     }
 
 

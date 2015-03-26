@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_done">Terminer</string>
     <string name="action_palette">Palette</string>
-    <string name="action_remove">Supprimer</string>
+    <string name="action_remove">Initialiser</string>
+    <string name="action_undo">Arriere</string>
 
 </resources>
